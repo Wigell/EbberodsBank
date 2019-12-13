@@ -111,8 +111,6 @@ public class Main extends Application {
             bank.getNumberOfCustomers();
         });
 
-
-
         Button btnEnter = new Button("Enter");
         btnEnter.setMinWidth(100);
         btnEnter.setOnAction(e -> {
@@ -175,13 +173,11 @@ public class Main extends Application {
                     txtfldBalance.getText(), txtfldAccountNumber.getText(), java.time.LocalDate.now() + " " + LocalTime.now().format(time),
                     txtfldBalance.getText());
 
-            txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
-            txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
-
-            if(bank.checkFields()) {
+            if(bank.checkFields(customer.getFirstName(), customer.getLastName(), customer.getPin(), customer.getBalance())) {
                 bank.customers.add(customer);
             }
-
+            txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
+            txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
             txtfldFirstName.clear();
             txtfldLastName.clear();
             txtfldPin.clear();
@@ -201,7 +197,7 @@ public class Main extends Application {
         passwordField.setPromptText("Ange pinkod");
         passwordField.setAlignment(Pos.CENTER);
 
-        txtfldAmount.setPromptText("Första insättning");
+        txtfldAmount.setPromptText("Belopp");// Summa
         txtfldAmount.setAlignment(Pos.CENTER);
         txtfldAmount.setMinWidth(150);
 
@@ -233,11 +229,8 @@ public class Main extends Application {
         txtfldBalance.setMinWidth(150);
         txtfldBalance.setPromptText("Saldo");
 
-
         // TextArea
         textAreaTopLogIn.setText("Logga in på följande sätt\nSätt i kort eller ange kontonummer\nAnge pinkod\nKlicka på Login");
-
-
 
         // Labels
         Label lblFirstName = new Label("Förnamn:");
@@ -255,7 +248,6 @@ public class Main extends Application {
         hBoxStart.getChildren().addAll(btnCustomer, btnBank);
         BorderPane borderPaneStart = new BorderPane();
         borderPaneStart.setCenter(hBoxStart);
-
 
         // Layout Bank
         VBox leftBank = new VBox();
@@ -325,7 +317,7 @@ public class Main extends Application {
         vBoxLeftLoggedIn.setMinWidth(120);
         vBoxLeftLoggedIn.setAlignment(Pos.TOP_CENTER);
         vBoxLeftLoggedIn.setPadding(new Insets(10));
-       vBoxLeftLoggedIn.getChildren().add(btnLogout);
+        vBoxLeftLoggedIn.getChildren().add(btnLogout);
 
         VBox vBoxLoggedIn = new VBox();
         vBoxLoggedIn.getChildren().addAll(textAreaTop, textAreaBottomLoggedIn, txtfldLoggedInInput,txtfldAmount, btnEnter);

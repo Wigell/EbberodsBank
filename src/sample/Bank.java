@@ -33,9 +33,9 @@ public class Bank {
         return NAMEOFBANK;
     }
 
-    public boolean checkFields() {
-        Main main = new Main();
-        if(main.txtfldFirstName.getText().trim().isEmpty() | main.txtfldLastName.getText().trim().isEmpty() | main.txtfldPin.getText().trim().isEmpty() | main.txtfldBalance.getText().trim().isEmpty()) {
+    public boolean checkFields(String firstName, String lastName, String pin,  String balance) {
+
+        if(firstName.trim().isEmpty() || lastName.trim().isEmpty() || pin.trim().isEmpty() || balance.trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Information saknas");
             alert.setHeaderText(null);
