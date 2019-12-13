@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+
 import java.util.ArrayList;
 
 public class Bank {
@@ -28,5 +31,19 @@ public class Bank {
 
     public String getNAMEOFBANK() {
         return NAMEOFBANK;
+    }
+
+    public boolean checkFields() {
+        Main main = new Main();
+        if(main.txtfldFirstName.getText().trim().isEmpty() || main.txtfldLastName.getText().trim().isEmpty() ||
+        main.txtfldPin.getText().trim().isEmpty() || main.txtfldBalance.getText().trim().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate fields");
+            alert.setHeaderText(null);
+            alert.setContentText("Kontollera att alla fält är ifyllda");
+            alert.showAndWait();
+
+        }
+        return false;
     }
 }

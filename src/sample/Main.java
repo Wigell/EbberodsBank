@@ -177,9 +177,11 @@ public class Main extends Application {
                     txtfldBalance.getText(), txtfldAccountNumber.getText(), java.time.LocalDate.now() + " " + LocalTime.now().format(time),
                     txtfldBalance.getText());
 
-            bank.customers.add(customer);
-            txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
-            txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
+            if(bank.checkFields()) {
+                bank.customers.add(customer);
+                txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
+                txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
+            }
             txtfldFirstName.clear();
             txtfldLastName.clear();
             txtfldPin.clear();
@@ -199,7 +201,7 @@ public class Main extends Application {
         passwordField.setPromptText("Ange pinkod");
         passwordField.setAlignment(Pos.CENTER);
 
-        txtfldAmount.setPromptText("Ange belopp");
+        txtfldAmount.setPromptText("Första insättning");
         txtfldAmount.setAlignment(Pos.CENTER);
         txtfldAmount.setMinWidth(150);
 
@@ -211,10 +213,10 @@ public class Main extends Application {
         txtfldLoggedInInput.setMinWidth(150);
         txtfldLoggedInInput.setAlignment(Pos.CENTER);
 
-        txtfldFirstName.setPromptText("First name");
+        txtfldFirstName.setPromptText("Förnamn");
         txtfldFirstName.setMinWidth(150);
 
-        txtfldLastName.setPromptText("Last Name");
+        txtfldLastName.setPromptText("Efternamn");
         txtfldLastName.setMinWidth(150);
 
         txtfldAccountNumber.setMinWidth(150);
