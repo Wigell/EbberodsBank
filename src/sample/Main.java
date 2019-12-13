@@ -10,9 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -177,11 +175,13 @@ public class Main extends Application {
                     txtfldBalance.getText(), txtfldAccountNumber.getText(), java.time.LocalDate.now() + " " + LocalTime.now().format(time),
                     txtfldBalance.getText());
 
+            txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
+            txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
+
             if(bank.checkFields()) {
                 bank.customers.add(customer);
-                txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
-                txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
             }
+
             txtfldFirstName.clear();
             txtfldLastName.clear();
             txtfldPin.clear();

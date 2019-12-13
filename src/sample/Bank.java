@@ -35,15 +35,14 @@ public class Bank {
 
     public boolean checkFields() {
         Main main = new Main();
-        if(main.txtfldFirstName.getText().trim().isEmpty() || main.txtfldLastName.getText().trim().isEmpty() ||
-        main.txtfldPin.getText().trim().isEmpty() || main.txtfldBalance.getText().trim().isEmpty()) {
+        if(main.txtfldFirstName.getText().trim().isEmpty() | main.txtfldLastName.getText().trim().isEmpty() | main.txtfldPin.getText().trim().isEmpty() | main.txtfldBalance.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate fields");
+            alert.setTitle("Information saknas");
             alert.setHeaderText(null);
             alert.setContentText("Kontollera att alla fält är ifyllda");
             alert.showAndWait();
-
+            return false;
         }
-        return false;
+        return true;
     }
 }
