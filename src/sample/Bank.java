@@ -13,10 +13,19 @@ public class Bank {
         numberOfCustomers = String.valueOf(customers.size());
         return numberOfCustomers;
     }
-    public void setNumbersOfCustomers(){
 
-        numberOfCustomers = getNumberOfCustomers() + 1;
+    public void setNumberOfCustomers(String numberOfCustomers) {
+        this.numberOfCustomers = numberOfCustomers;
     }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(ArrayList<Customer> customers) {
+        this.customers = customers;
+    }
+
     public String getNAMEOFBANK() {
         return NAMEOFBANK;
     }

@@ -53,15 +53,12 @@ public class Main extends Application {
         // Buttons
         Button btnLogin = new Button("Login");
         btnLogin.setOnAction(e -> {
-            if (counter == 1) {
                 accountnumber = Integer.parseInt(txtfldInput.getText());
                 accountnumber = accountnumber - 1;
-            }
-                int pin = Integer.parseInt(passwordField.getText());
-                int account = Integer.parseInt(bank.customers.get(accountnumber).getAccountNumber());
+                String pin = bank.customers.get(accountnumber).getPin();
 
             try {
-                if (pin == Integer.parseInt(bank.customers.get(accountnumber).getPin()) && account == Integer.parseInt(txtfldInput.getText()) ) {
+                if (passwordField.getText().equals(pin)) {
                     textAreaTop.setText("Välkommen till " + bank.getNAMEOFBANK() + " " + bank.customers.get(accountnumber).getFirstName() + " " + bank.customers.get(accountnumber).getLastName()
 
                             + "\nVad vill du göra?" +
