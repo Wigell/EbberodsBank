@@ -10,6 +10,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -80,7 +83,19 @@ public class Main extends Application {
 
         Button btnBank = new Button("Bank");
         btnBank.setMinWidth(120);
-        btnBank.setOnAction(e -> window.setScene(sceneBank));
+        btnBank.setOnAction(e -> {
+
+                File file = new File("./customers.xml");
+                if(file.exists()) {
+                    Serilazation deserialization = new Serilazation();
+                    bank.customers = deserialization.deserialize(bank.customers, "./customers.xml");
+                    txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
+                }
+                else {
+                    System.out.println("File doesnt exist");
+                }
+            window.setScene(sceneBank);
+        });
 
         Button btnCustomer = new Button("Kund");
         btnCustomer.setMinWidth(120);
@@ -125,22 +140,22 @@ public class Main extends Application {
                         System.out.println("Balance: " + bank.customers.get(accountnumber).getBalance());
                         System.out.println("Textfield: " + txtfldAmount.getText());
                           if(Double.parseDouble(bank.customers.get(accountnumber).getBalance()) < Double.parseDouble(String.valueOf(txtfldAmount.getText()))) {
-                              textAreaBottomLoggedIn.setText("Uttag medges ej\nTillgängligt belopp: " + bank.customers.get(accountnumber).getBalance());
-                              txtfldInput.clear();
+                              textAreaBottomLoggedIn.setText("Uttag medges ej\nTillgängligt belopp: " + bank.customers.get(accountnumber).getBalance() + " kr");
+                              txtfldLoggedInInput.clear();
                               txtfldAmount.clear();
                           }
                           else {
                               bank.customers.get(accountnumber).withdraw(txtfldAmount.getText(), bank.customers.get(accountnumber).getBalance());
-                              textAreaBottomLoggedIn.setText("Uttag:\t " + txtfldAmount.getText() + " kr\nTillgängligt belopp: " + bank.customers.get(accountnumber).getBalance());
+                              textAreaBottomLoggedIn.setText("Uttag:\t " + txtfldAmount.getText() + " kr\nTillgängligt belopp: " + bank.customers.get(accountnumber).getBalance() + " kr");
                               transaction = "Uttag:\t" + txtfldAmount.getText() + " kr\t" + java.time.LocalDate.now() + " " + LocalTime.now().format(time);
                               bank.customers.get(accountnumber).setTransactions(transaction);
-                              txtfldInput.clear();
+                              txtfldLoggedInInput.clear();
                               txtfldAmount.clear();
                           }
                         break;
                     case 3:
                         // visa saldo
-                        textAreaBottomLoggedIn.setText("Saldo: " + bank.customers.get(accountnumber).getBalance() + " kr");
+                        textAreaBottomLoggedIn.setText("Tillgängligt belopp: " + bank.customers.get(accountnumber).getBalance() + " kr");
                         txtfldAmount.clear();
                         txtfldLoggedInInput.clear();
                         break;
@@ -170,6 +185,7 @@ public class Main extends Application {
             bank.customers.add(customer);
             System.out.println(customer.getFirstName() + " " + customer.getLastName() + " Kundnr: " + customer.getAccountNumber() + " Saldo: " + customer.getBalance() + " kr " + "Pinkod: " + customer.getPin() + " " +customer.getCreateDate());
             txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
+            txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
             txtfldFirstName.clear();
             txtfldLastName.clear();
             txtfldPin.clear();
@@ -180,6 +196,7 @@ public class Main extends Application {
         btnLogout.setOnAction(e ->{
             Serilazation serilazation = new Serilazation();
             serilazation.serialize(bank.customers, "./customers.xml");
+
             textAreaBottomLoggedIn.clear();
             window.setScene(sceneStart);
         });

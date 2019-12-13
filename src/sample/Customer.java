@@ -78,7 +78,7 @@ public class Customer implements Serializable {
     }
 
     public void setTransactions(String latestTransaction) {
-            transaction = transaction.concat(latestTransaction).concat("\n");
+            transaction = transaction.concat("\n").concat(latestTransaction);
     }
 
     public void setPin(String pin) {
