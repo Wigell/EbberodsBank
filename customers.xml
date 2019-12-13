@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_221" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="sample.Customer">
+    <void property="accountNumber">
+     <string>01</string>
+    </void>
+    <void property="balance">
+     <string>650.0</string>
+    </void>
+    <void property="createDate">
+     <string>2019-12-13 16:48:12</string>
+    </void>
+    <void property="firstName">
+     <string>Tomas</string>
+    </void>
+    <void property="lastName">
+     <string>Wigell</string>
+    </void>
+    <void property="pin">
+     <string>9510</string>
+    </void>
+    <void property="transactions">
+     <string>
+Insättning: 100 kr 2019-12-13 16:48:12
+
+Insättning: 200 kr	2019-12-13 16:49:00
+Uttag:	150 kr	2019-12-13 16:49:09
+Insättning: 500 kr	2019-12-13 16:50:03</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.Customer">
+    <void property="accountNumber">
+     <string>2</string>
+    </void>
+    <void property="balance">
+     <string>200</string>
+    </void>
+    <void property="createDate">
+     <string>2019-12-13 16:48:29</string>
+    </void>
+    <void property="firstName">
+     <string>Veronica</string>
+    </void>
+    <void property="lastName">
+     <string>Hermansson</string>
+    </void>
+    <void property="pin">
+     <string>5012</string>
+    </void>
+    <void property="transactions">
+     <string>
+Insättning: 200 kr 2019-12-13 16:48:29
+</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.Customer">
+    <void property="accountNumber">
+     <string>3</string>
+    </void>
+    <void property="balance">
+     <string>300</string>
+    </void>
+    <void property="createDate">
+     <string>2019-12-13 16:48:41</string>
+    </void>
+    <void property="firstName">
+     <string>Tiger</string>
+    </void>
+    <void property="lastName">
+     <string>Persson</string>
+    </void>
+    <void property="pin">
+     <string>3774</string>
+    </void>
+    <void property="transactions">
+     <string>
+Insättning: 300 kr 2019-12-13 16:48:41
+</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
