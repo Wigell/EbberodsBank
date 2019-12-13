@@ -134,8 +134,6 @@ public class Main extends Application {
                         break;
                     case 2:
                         // Uttag
-                        System.out.println("Balance: " + bank.customers.get(accountnumber).getBalance());
-                        System.out.println("Textfield: " + txtfldAmount.getText());
                           if(Double.parseDouble(bank.customers.get(accountnumber).getBalance()) < Double.parseDouble(String.valueOf(txtfldAmount.getText()))) {
                               textAreaBottomLoggedIn.setText("Uttag medges ej\nTillgängligt belopp: " + bank.customers.get(accountnumber).getBalance() + " kr");
                               txtfldLoggedInInput.clear();
@@ -180,7 +178,6 @@ public class Main extends Application {
                     txtfldBalance.getText());
 
             bank.customers.add(customer);
-            System.out.println(customer.getFirstName() + " " + customer.getLastName() + " Kundnr: " + customer.getAccountNumber() + " Saldo: " + customer.getBalance() + " kr " + "Pinkod: " + customer.getPin() + " " +customer.getCreateDate());
             txtfldAccountNumber.setText(String.valueOf(bank.customers.size() + 1));
             txtfldDate.setText(java.time.LocalDate.now() + " " + LocalTime.now().format(time));
             txtfldFirstName.clear();
